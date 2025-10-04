@@ -1,0 +1,15 @@
+@use "base/fonts";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smooting: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}

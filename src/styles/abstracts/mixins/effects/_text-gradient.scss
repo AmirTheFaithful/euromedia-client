@@ -1,0 +1,68 @@
+@use "sass:meta";
+@use "sass:list";
+@use "sass:math";
+
+/// @access private
+@mixin validate-text-gradient($colors, $angle: $gradient-angle) {
+  @if meta.type-of($colors) != "list" {
+    @error '❌ [text-gradient] Argument $colors must be a list of #hex values, e.g. (#fff, #000).';
+  }
+
+  @if list.length($colors) < 2 {
+    @error '❌ text-gradient requires at least two colors. Received: #{list.length($colors)}.';
+  }
+
+  // Check if each given color value is valid.
+  @each $color in $colors {
+    @if meta.type-of($color) != "color" {
+      @error '❌ [text-gradient] Value "#{$color} is not a valid color.';
+    }
+  }
+
+  @if meta.type-of($angle) != "number" or not math.unit($angle) == "deg" {
+    @error '❌ [text-gradient] The $angle must be a degree, e.g. 45deg, 90deg. Received: #{$angle}';
+  }
+}
+
+/// @access private
+@mixin apply-text-gradient($colors, $angle) {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient($angle, $colors...);
+}
+
+/// [text-gradient] Applies a linear gradient to text using background-clip.
+///
+/// @param {list} $colors - A list of at least two valid CSS colors.
+/// @param {number} $angle - Gradient direction in degrees. Default: $gradient-angle.
+///
+/// @example scss - Basic usage
+///   @include text-gradient((red, orange, yellow));
+///
+/// @example scss - With custom angle
+///   @include text-gradient((#fff, #000), 135deg);
+///
+/// @access public
+@mixin text-gradient($colors, $angle: $gradient-angle) {
+  @include validate-text-gradient($colors, $angle);
+  @include apply-text-gradient($colors, $angle);
+}
+
+/// [text-gradient-animated] Applies animated linear gradient to text.
+/// Includes `text-gradient()` and adds animation.
+///
+/// @param {list} $colors - A list of at least two valid CSS colors.
+/// @param {number} $angle - Gradient direction in degrees. Default: $gradient-angle.
+///
+/// @example scss
+///   @include text-gradient-animated((#fff, #000));
+///
+/// @access public
+@mixin text-gradient-animated($colors, $angle: $gradient-angle) {
+  @include text-gradient($colors, $angle);
+
+  animation: textGradientFlow 12s ease-in-out infinite;
+  background-size: 300% 300%;
+}

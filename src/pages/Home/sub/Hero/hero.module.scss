@@ -1,0 +1,43 @@
+@keyframes onload {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  animation: onload 1.5s ease-out;
+}
+
+.heroText {
+  color: $chromium;
+  font-size: 120px;
+  font-family: "Playwrite DE SAS";
+  letter-spacing: 16px;
+
+  @include text-gradient-animated(
+    ($chromium, $europe-sky, $monica),
+    $gradient-angle
+  );
+}
+
+.heroDescription {
+  font-size: 25px;
+  font-family: $scandic;
+  letter-spacing: 2px;
+
+  @include text-gradient-animated(
+    ($old-sedan, $boutique, $glamour),
+    $gradient-angle
+  );
+}

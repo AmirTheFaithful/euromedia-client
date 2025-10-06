@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { JSX, FC } from "react";
 import styles from "./errorFallback.module.scss";
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
   onRetry?: () => void;
 }
 
-export const ErrorFallback: FC<Props> = ({ error, onRetry }) => {
+export const ErrorFallback: FC<Props> = ({ error, onRetry }): JSX.Element => {
   return (
     <div className={styles.fallback}>
       <h1>Something went wrong 💭</h1>

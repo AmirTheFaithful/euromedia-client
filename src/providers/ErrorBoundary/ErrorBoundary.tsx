@@ -1,7 +1,7 @@
 import type { ReactNode, ErrorInfo } from "react";
 import { Component } from "react";
 
-import { Fallback } from "../../pages/special/ErrorFallback";
+import { ErrorFallback } from "@/fallbacks/error/ErrorFallback";
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -29,7 +29,7 @@ export class ErrorBoundary extends Component<
   render() {
     if (this.state.hasError) {
       // Render spare UI.
-      return <Fallback />;
+      return <ErrorFallback />;
     }
 
     return this.props.children;

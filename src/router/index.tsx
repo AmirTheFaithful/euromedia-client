@@ -1,12 +1,18 @@
+import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router";
 
-import HomePage from "@/pages/Home";
-import { ErrorFallback } from "@/pages/special";
+import { ErrorFallback, LoadingFallback } from "@/fallbacks";
+
+const HomePage = lazy(() => import("@/pages/Home"));
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <HomePage />
+      </Suspense>
+    ),
     errorElement: <ErrorFallback />,
   },
 ]);

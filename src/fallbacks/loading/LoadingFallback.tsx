@@ -9,7 +9,7 @@ import styles from "./loadingFallback.module.scss";
 
 export const LoadingFallback: FC = (): JSX.Element => {
   return (
-    <main className={styles.page}>
+    <main className={styles.page} role="status" aria-label="Loading content...">
       <div className={styles.signature}>
         <E />
         <U />

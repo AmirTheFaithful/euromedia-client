@@ -1,0 +1,29 @@
+@use "sass:meta";
+
+/// Validates that a given value is a number and that mixin and value names are strings.
+///
+/// @param {any} $value - The value to validate. Must be a number (e.g. `6px`).
+/// @param {string} $mx-name - The name of the mixin performing the validation (for error context).
+/// @param {string} $vl-name - The name of the value being validated (for error context).
+///
+/// @throws ❌ Error if `$mx-name` or `$vl-name` are not strings.
+/// @throws ❌ Error if `$value` is not a number.
+///
+/// @example scss - Example usage
+///   @include validate-number(12px, "preview-card", "gap");
+///
+/// @group utils
+/// @access private
+@mixin validate-number($value, $mx-name, $vl-name) {
+  @if meta.type-of($mx-name) != "string" {
+    @error "❌ [#{$mx-name}] $mx-name must be a string representing a name of the mixin (e.g. 'preview-card'). Received '#{$mx-name}'";
+  }
+
+  @if meta.type-of($vl-name) != "string" {
+    @error "❌ [#{$mx-name}] $vl-name must be a string representing a name of the mixin (e.g. 'gap'). Received '#{$vl-name}'";
+  }
+
+  @if meta.type-of($value) != "number" {
+    @error "❌ [#{$mx-name}] $#{$vl-name} must be a number (e.g. 6px). Received '#{$value}'";
+  }
+}

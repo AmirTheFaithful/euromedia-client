@@ -1,0 +1,24 @@
+@use "sass:map" as map;
+
+@use "../../variables/sizes" as *;
+
+@mixin media($from: null, $to: null) {
+  $min: map.get($breakpoints, $from);
+  $max: map.get($breakpoints, $to);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $min != null {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else if $max != null {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$from} / #{$to}";
+  }
+}

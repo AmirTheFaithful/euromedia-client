@@ -1,0 +1,49 @@
+@use "sass:meta";
+
+// Local import.
+@use "../utils/validators" as vl;
+
+/// Defines a common card container with padding, border radius, and background options.
+/// Can be used with any card-based layout.
+///
+/// @mixin card-box
+/// @param {number|null} $padding [null] - Inner spacing of the card. Must be a number or `null`.
+/// @param {number} $radius - Border radius of the card.
+/// @param {color|string|null} $bg [null] - Background color or gradient string. Defaults to a blurred dark background if `null`.
+///
+/// @example scss - Example usage
+///   .profile-card {
+///     @include card-box(16px, 12px, linear-gradient(135deg, #444, #222));
+///   }
+///
+/// @group components
+/// @access public
+@mixin card-box($padding: null, $radius, $bg: null) {
+  @if $padding != null {
+    @include vl.validate-number($padding, "card-box", "padding");
+    padding: $padding;
+  }
+
+  @include vl.validate-number($radius, "card-box", "radius");
+
+  @if $bg !=
+    null and
+    meta.type-of($bg) !=
+    "color" and
+    meta.type-of($bg) !=
+    "string"
+  {
+    @error "❌ [cardBox] $bg must be a color or gradient string. Received: #{$bg}";
+  }
+
+  padding: $padding;
+  box-shadow: 0px 0px 16px #0006;
+  border-radius: $radius;
+
+  @if $bg == null {
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.45);
+  } @else {
+    background: $bg;
+  }
+}

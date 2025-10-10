@@ -1,0 +1,59 @@
+@use "sass:meta";
+
+// Local import.
+@use "../utils/validators" as vl;
+
+/// [flex-center] Centers content using Flexbox.
+///
+///
+/// @example scss - Basic usage
+///   .button {
+///     @include flex-center;
+///   }
+///
+/// @group layouts
+///
+/// @access public
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/// [flex-row] Creates a horizontal flex container.
+///
+/// @param {number} $gap - Horizontal gap between items. Default: 0px.
+///
+/// @example scss - Basic usage
+///   @include flex-row(16px);
+///
+/// @group layouts
+///
+/// @access public
+@mixin flex-row($gap: 0px) {
+  @include vl.validate-number($gap, "flex-row", "gap");
+
+  display: flex;
+  column-gap: $gap;
+  flex-direction: row;
+}
+
+/// Creates a flex container with column direction and an optional row gap.
+///
+/// @mixin flex-column
+/// @param {number} $gap [0px] - The gap between flex items.
+///
+/// @example scss - Example usage
+///   .list {
+///     @include flex-column(8px);
+///   }
+///
+/// @group layouts
+/// @access public
+@mixin flex-column($gap: 0px) {
+  @include vl.validate-number($gap, "flex-column", "gap");
+
+  display: flex;
+  row-gap: $gap;
+  flex-direction: column;
+}

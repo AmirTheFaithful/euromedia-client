@@ -1,0 +1,61 @@
+@use "../../../../../styles/abstracts/index.scss" as *;
+
+.container {
+  @include media(xs) {
+    padding: 4px;
+    column-gap: 10px;
+    padding-left: 6px;
+  }
+
+  @include media(md) {
+    padding: 6px;
+    column-gap: 20px;
+    padding-left: 12px;
+  }
+}
+
+.lineInput {
+  @include media(xs) {
+    font-size: 14px;
+
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
+
+  @include media(sm) {
+    font-size: 16px;
+
+    &::placeholder {
+      font-size: 14px;
+    }
+  }
+
+  @include media(md) {
+    font-size: 18px;
+
+    &::placeholder {
+      font-size: 20px;
+    }
+  }
+
+  @include media(lg) {
+    font-size: 20px;
+
+    &::placeholder {
+      font-size: 18px;
+    }
+  }
+}
+
+.validationCircle {
+  @include media(xs) {
+    width: 20px;
+    height: 20px;
+  }
+
+  @include media(md) {
+    width: 30px;
+    height: 30px;
+  }
+}

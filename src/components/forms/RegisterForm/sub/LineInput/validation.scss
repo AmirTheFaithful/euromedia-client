@@ -1,0 +1,41 @@
+.circle-initial {
+  box-shadow: 0px 0px 18px #6af6;
+  background-color: #6af;
+}
+
+.circle-valid {
+  box-shadow: 0px 0px 18px #4c46;
+  background-color: #4c4;
+}
+
+.circle-invalid {
+  box-shadow: 0px 0px 18px #f326;
+  background-color: #f32;
+}
+
+.container-initial {
+  border: 2px solid #6af4;
+
+  &:focus-within {
+    box-shadow: 0px 0px 18px #6afc;
+    border-color: #6af;
+  }
+}
+
+.container-valid {
+  border: 2px solid #4c44;
+
+  &:focus-within {
+    box-shadow: 0px 0px 18px #4c4c;
+    border-color: #4c4;
+  }
+}
+
+.container-invalid {
+  border: 2px solid #f324;
+
+  &:focus-within {
+    box-shadow: 0px 0px 18px #f32c;
+    border-color: #f32;
+  }
+}

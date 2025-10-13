@@ -1,9 +1,9 @@
 import type { JSX, FC } from "react";
 
-import E from "@/icons/e.svg?react";
-import U from "@/icons/u.svg?react";
-import R from "@/icons/r.svg?react";
-import O from "@/icons/o.svg?react";
+import E from "@/assets/icons/e.svg?react";
+import U from "@/assets/icons/u.svg?react";
+import R from "@/assets/icons/r.svg?react";
+import O from "@/assets/icons/o.svg?react";
 
 import styles from "./loadingFallback.module.scss";
 

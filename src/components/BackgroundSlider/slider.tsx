@@ -1,6 +1,6 @@
 import type { JSX, FC } from "react";
 import { useEffect, useState } from "react";
-import { PicInfo } from "./PicInfo/picInfo";
+import { PicInfo } from "./sub/PicInfo";
 import styles from "./slider.module.scss";
 
 import images from "../../utils/backgrounds";
@@ -31,6 +31,7 @@ export const BackgroundSlider: FC = (): JSX.Element => {
             index === current ? `${styles.active}` : ""
           }`}
           style={{ backgroundImage: `url(${image.src})` }}
+          data-testid="bg-image"
           aria-label={`${image.place} by ${image.author}`}
         >
           <PicInfo image={image} />

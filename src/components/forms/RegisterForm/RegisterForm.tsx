@@ -67,7 +67,6 @@ const RegisterFormComponent = (): JSX.Element => {
         // Render an abstract fail notification.
         toast.error("Network error. Please try again.");
       }
-    } finally {
     }
   };
 

@@ -8,7 +8,7 @@ import type { LoginData } from "./types";
 
 import { LineInput } from "../common/LineInput/LineInput";
 import { SubmitButton } from "../common/SubmitButton/SubmitButton";
-import { useLogin, useFormValidation } from "./hooks";
+import { useLogin, useLoginValidation } from "./hooks";
 
 import styles from "./loginForm.module.scss";
 
@@ -23,7 +23,7 @@ const LoginFormComponent = (): JSX.Element => {
 
   // Initialize using custom hooks.
   const { login } = useLogin();
-  const valid = useFormValidation(data);
+  const valid = useLoginValidation(data);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;

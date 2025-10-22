@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import type { LoginData } from "../types";
 import { emailRegex } from "@/utils/validators";
 
-export const useFormValidation = (data: LoginData) => {
+export const useLoginValidation = (data: LoginData) => {
   const [valid, setValid] = useState(false);
 
   useEffect(() => {

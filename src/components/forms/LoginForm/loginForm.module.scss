@@ -1,0 +1,41 @@
+@use "./loginForm.breakpoints.scss";
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  // padding: 35px;
+  box-shadow: 1px 2px 16px #0006;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.inputsSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.formHeading {
+  color: white;
+  // font-size: 40px;
+  text-shadow: 0px 0px 26px #fffa;
+  font-family: $scandic;
+}
+
+.formSubHeading {
+  color: $french-police;
+  font-size: 16px;
+  font-family: $scandic;
+}
+
+.loginLink {
+  // font-size: 16px;
+  font-family: $scandic;
+  text-decoration: none;
+
+  &:link {
+    // #c6f
+    color: $iberia-sky;
+  }
+}

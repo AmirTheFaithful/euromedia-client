@@ -1,0 +1,53 @@
+@use "../../../styles/abstracts/index.scss" as *;
+
+.form {
+  @include media(xs) {
+    row-gap: 20px;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  @include media(md) {
+    row-gap: 30px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+}
+
+.inputsSection {
+  @include media(xs) {
+    row-gap: 20px;
+    padding: 12px;
+  }
+
+  @include media(md) {
+    row-gap: 25px;
+    padding: 20px;
+  }
+}
+
+.formHeading {
+  @include media(xs) {
+    font-size: 25px;
+  }
+
+  @include media(md) {
+    font-size: 35px;
+  }
+
+  @include media(lg) {
+    font-size: 40px;
+  }
+}
+
+.loginLink {
+  @include media(xs) {
+    margin-left: 12px;
+    font-size: 12px;
+  }
+
+  @include media(md) {
+    margin-left: 0;
+    font-size: 16px;
+  }
+}

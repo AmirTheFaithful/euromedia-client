@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 
-import styles from "./submit-button.module.scss";
+import styles from "./submitButton.module.scss";
 
 interface Props {
   label: string;

@@ -1,7 +1,7 @@
 import type { JSX, ChangeEventHandler } from "react";
 import { useEffect, useState } from "react";
 
-import styles from "./line-input.module.scss";
+import styles from "./lineInput.module.scss";
 import "./validation.scss";
 
 interface Props {

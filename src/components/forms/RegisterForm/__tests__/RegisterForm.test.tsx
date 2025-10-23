@@ -1,9 +1,16 @@
 import type { JSX, ChangeEventHandler, ReactNode } from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  act,
+} from "@testing-library/react";
 import "@testing-library/jest-dom";
-import axios from "axios";
 import { toast } from "sonner";
+
 import { RegisterForm } from "../RegisterForm";
+import { api } from "@/api/axiosInstance";
 
 /* Helper functions */
 
@@ -49,7 +56,6 @@ interface LinkProps {
 /* Mocks */
 
 // Mock axios and sonner (toaster) packages.
-jest.mock("axios");
 jest.mock("sonner", () => ({
   toast: {
     success: jest.fn(),
@@ -57,8 +63,17 @@ jest.mock("sonner", () => ({
   },
 }));
 
+// Mock react-router's Link component.
+jest.mock("react-router", () => ({
+  Link: ({ children, to, ...props }: LinkProps): JSX.Element => (
+    <a href={to} {...props}>
+      {children}
+    </a>
+  ),
+}));
+
 // Mock LineInput local component.
-jest.mock("../sub/LineInput", () => ({
+jest.mock("../../common/LineInput", () => ({
   LineInput: ({
     placeholder,
     value,
@@ -76,19 +91,17 @@ jest.mock("../sub/LineInput", () => ({
 }));
 
 // Mock SubmitButton local component.
-jest.mock("../sub/SubmitButton", () => ({
+jest.mock("../../common/SubmitButton", () => ({
   SubmitButton: ({ label, disabled }: SubmitButtonProps): JSX.Element => (
     <button disabled={disabled}>{label}</button>
   ),
 }));
 
-// Mock react-router's Link component.
-jest.mock("react-router", () => ({
-  Link: ({ children, to, ...props }: LinkProps): JSX.Element => (
-    <a href={to} {...props}>
-      {children}
-    </a>
-  ),
+// Mock custom Axios instance.
+jest.mock("@/api/axiosInstance", () => ({
+  api: {
+    post: jest.fn(),
+  },
 }));
 
 describe("RegisterForm", () => {
@@ -109,16 +122,20 @@ describe("RegisterForm", () => {
   });
 
   it("Sends valid data and displays a success toast notification", async () => {
-    (axios.post as jest.Mock).mockResolvedValueOnce({
+    (api.post as jest.Mock).mockResolvedValueOnce({
       data: { message: "Register success." },
     });
 
     render(<RegisterForm />);
-    enterData();
-    mockButtonClick();
+
+    // Optimize await behavior of sending valid data.
+    await act(async () => {
+      enterData();
+      mockButtonClick();
+    });
 
     await waitFor(() => {
-      expect(axios.post).toHaveBeenCalled();
+      expect(api.post).toHaveBeenCalled();
       expect(toast.success).toHaveBeenCalledWith(
         expect.stringMatching(
           "We have been sent verification link! Please check your inbox."
@@ -128,7 +145,7 @@ describe("RegisterForm", () => {
   });
 
   it("Displays some toast.error, if the server have been refused", async () => {
-    (axios.post as jest.Mock).mockRejectedValueOnce({
+    (api.post as jest.Mock).mockRejectedValueOnce({
       response: { data: { message: "Document exists." } },
     });
 

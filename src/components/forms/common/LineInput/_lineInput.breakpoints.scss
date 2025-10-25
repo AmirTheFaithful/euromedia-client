@@ -1,4 +1,4 @@
-@use "../../../../../styles/abstracts/index.scss" as *;
+@use "../../../../styles/abstracts/index.scss" as *;
 
 .container {
   @include media(xs) {

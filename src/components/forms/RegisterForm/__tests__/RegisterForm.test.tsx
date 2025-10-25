@@ -7,6 +7,7 @@ import type { ReactNode } from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { toast } from "sonner";
+
 import { RegisterForm } from "../RegisterForm";
 
 jest.mock("react-router-dom", () => ({

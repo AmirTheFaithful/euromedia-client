@@ -1,6 +1,6 @@
 import type { JSX, ChangeEvent, FormEvent } from "react";
 import { memo, useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
 import type { RegisterData } from "./types";

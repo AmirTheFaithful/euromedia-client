@@ -35,6 +35,7 @@ const RegisterFormComponent = (): JSX.Element => {
     try {
       // Disable submit button while operation is in progress.
       setSubmitting(true);
+      toast.loading("Submission...", { id: "submission" });
       // Perform registration process.
       await register(data);
       // Ignite user's eyes with friendly success notification.
@@ -46,6 +47,7 @@ const RegisterFormComponent = (): JSX.Element => {
     } catch (error: any) {
       toast.error(`Registration failed due to "${error.message}"`);
     } finally {
+      toast.dismiss("submission");
       // Cleanup form fields.
       setSubmitting(false);
     }
@@ -100,7 +102,7 @@ const RegisterFormComponent = (): JSX.Element => {
         />
       </section>
 
-      <SubmitButton label="Sign Up" disabled={!valid || submitting} />
+      <SubmitButton label="Sign Up" disabled={!valid} submitting={submitting} />
 
       <Link
         aria-label="Go to sign-in page"

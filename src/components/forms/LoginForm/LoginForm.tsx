@@ -36,6 +36,7 @@ const LoginFormComponent = (): JSX.Element => {
     try {
       // Disable submit button while operation is in progress.
       setSubmitting(true);
+      toast.loading("Submission...", { id: "submission" });
       // Perform login operation.
       await login(data);
       // Ignite user's eyes with friendly success notification.
@@ -45,6 +46,7 @@ const LoginFormComponent = (): JSX.Element => {
     } catch (error: any) {
       toast.error(`Login failed due to "${error.message}"`);
     } finally {
+      toast.dismiss("submission");
       setSubmitting(false);
     }
   };
@@ -82,7 +84,7 @@ const LoginFormComponent = (): JSX.Element => {
         />
       </section>
 
-      <SubmitButton label="Sign In" disabled={!valid || submitting} />
+      <SubmitButton label="Sign In" disabled={!valid} submitting={submitting} />
 
       <Link
         aria-label="Go to sign-up page"

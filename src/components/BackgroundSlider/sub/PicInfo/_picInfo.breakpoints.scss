@@ -1,0 +1,28 @@
+@use "../../../../styles/abstracts" as *;
+
+.picInfo {
+  // Base setting.
+  left: 2px;
+  bottom: 2px;
+
+  @include media(xs, sm) {
+    @include orientation(portrait) {
+      font-size: 10px;
+      column-gap: 10px;
+    }
+
+    @include orientation(landscape) {
+      left: 5px;
+      bottom: 5px;
+      font-size: 5px;
+      column-gap: 5px;
+    }
+  }
+
+  @include media(sm) {
+    left: 10px;
+    bottom: 10px;
+    font-size: 10px;
+    column-gap: 10px;
+  }
+}

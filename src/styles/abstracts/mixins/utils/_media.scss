@@ -22,3 +22,36 @@
     @warn "Unknown breakpoint: #{$from} / #{$to}";
   }
 }
+
+/// @mixin orientation
+/// @description
+/// Applies CSS rules based on the screen orientation.
+/// Supports two values: `portrait` and `landscape`.
+///
+/// @param {String} $type - The orientation type. Possible values:
+///   - `portrait` — portrait screen orientation.
+///   - `landscape` — landscape screen orientation.
+///
+/// @example scss
+/// .inputsSection {
+///   @include orientation(portrait) {
+///     flex-direction: column;
+///   }
+///
+///   @include orientation(landscape) {
+///     flex-direction: row;
+///     column-gap: 20px;
+///   }
+/// }
+///
+/// @warn If a value other than `portrait` or `landscape` is provided,
+/// a warning will be shown in the console.
+@mixin orientation($type: portrait) {
+  @if $type == portrait or $type == landscape {
+    @media (orientation: #{$type}) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown orientation type: #{$type}";
+  }
+}

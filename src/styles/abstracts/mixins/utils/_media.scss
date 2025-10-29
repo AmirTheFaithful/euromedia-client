@@ -2,6 +2,29 @@
 
 @use "../../variables/sizes" as *;
 
+/// @mixin orientation
+/// @description
+/// Applies CSS rules based on the screen orientation.
+/// Supports two values: `portrait` and `landscape`.
+///
+/// @param {String} $type - The orientation type. Possible values:
+///   - `portrait` — portrait screen orientation.
+///   - `landscape` — landscape screen orientation.
+///
+/// @example scss
+/// .inputsSection {
+///   @include orientation(portrait) {
+///     flex-direction: column;
+///   }
+///
+///   @include orientation(landscape) {
+///     flex-direction: row;
+///     column-gap: 20px;
+///   }
+/// }
+///
+/// @warn If a value other than `portrait` or `landscape` is provided,
+/// a warning will be shown in the console.
 @mixin media($from: null, $to: null) {
   $min: map.get($breakpoints, $from);
   $max: map.get($breakpoints, $to);

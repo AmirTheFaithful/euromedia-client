@@ -10,6 +10,7 @@ interface Props {
   changeHandler: ChangeEventHandler<HTMLInputElement>;
   placeholder: string;
   name: string;
+  autocomplete?: string;
 }
 
 export const LineInput = ({
@@ -18,6 +19,7 @@ export const LineInput = ({
   changeHandler,
   placeholder,
   name,
+  autocomplete,
 }: Props): JSX.Element => {
   const [validation, setValidation] = useState<"initial" | "valid" | "invalid">(
     "initial"
@@ -69,6 +71,8 @@ export const LineInput = ({
         placeholder={placeholder}
         value={value}
         name={name}
+        id={name}
+        autoComplete={autocomplete}
         onChange={changeHandler}
         required
       />

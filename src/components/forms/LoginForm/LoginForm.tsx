@@ -57,22 +57,23 @@ const LoginFormComponent = (): JSX.Element => {
         <h1 id="form-heading" className={styles.formHeading}>
           Login
         </h1>
+
+        <h3 id="inputs-heading" className={styles.formSubHeading}>
+          Please, enter your credentials
+        </h3>
       </header>
 
       <section
         className={styles.inputsSection}
         aria-labelledby="inputs-heading"
       >
-        <h3 id="inputs-heading" className={styles.formSubHeading}>
-          Please, enter your credentials
-        </h3>
-
         <LineInput
           type="email"
           placeholder="Email"
           value={data.email}
           name="email"
           changeHandler={handleChange}
+          autocomplete="email"
         />
 
         <LineInput
@@ -81,10 +82,11 @@ const LoginFormComponent = (): JSX.Element => {
           value={data.password}
           name="password"
           changeHandler={handleChange}
+          autocomplete="current-password"
         />
       </section>
 
-      <SubmitButton label="Sign In" disabled={!valid} submitting={submitting} />
+      <SubmitButton label="Sign In" invalid={!valid} submitting={submitting} />
 
       <Link
         aria-label="Go to sign-up page"

@@ -5,12 +5,12 @@ import styles from "./submitButton.module.scss";
 
 interface Props {
   label: string;
-  disabled: boolean;
+  invalid: boolean;
   submitting?: boolean;
 }
 
 export const SubmitButton = ({
-  disabled,
+  invalid,
   label,
   submitting,
 }: Props): JSX.Element => {
@@ -18,9 +18,16 @@ export const SubmitButton = ({
     <input
       aria-label={label}
       type="submit"
-      className={clsx(styles.submitButton, submitting && styles.submission)}
+      className={clsx(
+        // Common class.
+        styles.submitButton,
+
+        // Set classes on negative cases.
+        invalid && styles.invalid,
+        submitting && styles.submission
+      )}
       value={label}
-      disabled={disabled}
+      disabled={invalid || submitting}
     />
   );
 };

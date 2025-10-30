@@ -1,10 +1,17 @@
 @use "../../../styles/abstracts/index.scss" as *;
 
 .form {
-  @include media(xs) {
-    row-gap: 20px;
-    padding: 12px;
-    border-radius: 14px;
+  padding: 12px;
+  border-radius: 14px;
+
+  @include media(xs, md) {
+    @include orientation(portrait) {
+      row-gap: 20px;
+    }
+
+    @include orientation(landscape) {
+      row-gap: 0;
+    }
   }
 
   @include media(md) {
@@ -15,23 +22,49 @@
 }
 
 .inputsSection {
-  @include media(xs) {
-    row-gap: 20px;
-    padding: 12px;
+  display: flex;
+  padding: 12px;
+
+  @include media(xs, sm) {
+    @include orientation(portrait) {
+      flex-direction: column;
+      row-gap: 20px;
+    }
+
+    @include orientation(landscape) {
+      flex-direction: row;
+      column-gap: 20px;
+    }
   }
 
-  @include media(md) {
+  @include media(sm, md) {
+    flex-direction: column;
     row-gap: 25px;
     padding: 20px;
   }
+
+  @include media(md) {
+    flex-direction: column;
+    row-gap: 30px;
+  }
+}
+
+.inputsGroup {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
 }
 
 .formHeading {
-  @include media(xs) {
+  @include media(xs, sm) {
     font-size: 25px;
+
+    @include orientation(landscape) {
+      font-size: 20px;
+    }
   }
 
-  @include media(md) {
+  @include media(sm) {
     font-size: 35px;
   }
 

@@ -56,53 +56,66 @@ const RegisterFormComponent = (): JSX.Element => {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <header aria-labelledby="form-heading">
-        <h1 id="form-heading" className={styles.formHeading}>
+        <h1
+          id="form-heading"
+          className={styles.formHeading}
+          onClick={() => {
+            alert(document.documentElement.clientHeight);
+          }}
+        >
           Register
         </h1>
+        <h3 id="inputs-heading" className={styles.formSubHeading}>
+          Please, enter your credentials
+        </h3>
       </header>
 
       <section
         className={styles.inputsSection}
         aria-labelledby="inputs-heading"
       >
-        <h3 id="inputs-heading" className={styles.formSubHeading}>
-          Please, enter your credentials
-        </h3>
+        <section className={styles.inputsGroup}>
+          <LineInput
+            type="text"
+            placeholder="Firstname"
+            value={data.firstname}
+            name="firstname"
+            changeHandler={handleChange}
+            autocomplete="given-name"
+          />
 
-        <LineInput
-          type="text"
-          placeholder="Firstname"
-          value={data.firstname}
-          name="firstname"
-          changeHandler={handleChange}
-        />
+          <LineInput
+            type="text"
+            placeholder="Lastname"
+            value={data.lastname}
+            name="lastname"
+            changeHandler={handleChange}
+            autocomplete="family-name"
+          />
+        </section>
 
-        <LineInput
-          type="text"
-          placeholder="Lastname"
-          value={data.lastname}
-          name="lastname"
-          changeHandler={handleChange}
-        />
+        <section className={styles.inputsGroup}>
+          <LineInput
+            type="email"
+            placeholder="Email"
+            value={data.email}
+            name="email"
+            changeHandler={handleChange}
+            autocomplete="email"
+          />
 
-        <LineInput
-          type="email"
-          placeholder="Email"
-          value={data.email}
-          name="email"
-          changeHandler={handleChange}
-        />
-
-        <LineInput
-          type="password"
-          placeholder="Password"
-          value={data.password}
-          name="password"
-          changeHandler={handleChange}
-        />
+          <LineInput
+            type="password"
+            placeholder="Password"
+            value={data.password}
+            name="password"
+            changeHandler={handleChange}
+            autocomplete="new-password"
+          />
+        </section>
       </section>
 
-      <SubmitButton label="Sign Up" disabled={!valid} submitting={submitting} />
+      <SubmitButton label="Sign Up" invalid={!valid} submitting={submitting} />
 
       <Link
         aria-label="Go to sign-in page"

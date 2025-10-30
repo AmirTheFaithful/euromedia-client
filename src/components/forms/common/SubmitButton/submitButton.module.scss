@@ -18,10 +18,10 @@
     box-shadow: 0px 0px 12px #86f;
     background-color: #86f;
   }
+}
 
-  &:disabled {
-    visibility: hidden;
-  }
+.invalid {
+  visibility: hidden;
 }
 
 .submission {

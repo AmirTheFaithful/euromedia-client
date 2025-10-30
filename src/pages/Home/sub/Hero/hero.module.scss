@@ -1,3 +1,5 @@
+@use "hero.breakpoints";
+
 @keyframes onload {
   from {
     opacity: 0;
@@ -21,9 +23,8 @@
 
 .heroText {
   color: $chromium;
-  font-size: 120px;
+  text-align: center;
   font-family: "Playwrite DE SAS";
-  letter-spacing: 16px;
 
   @include text-gradient-animated(
     ($chromium, $europe-sky, $monica),
@@ -32,7 +33,6 @@
 }
 
 .heroDescription {
-  font-size: 25px;
   font-family: $scandic;
   letter-spacing: 2px;
 

@@ -4,20 +4,12 @@
   display: flex;
   align-items: center;
 
-  // border: 2px solid #fa66;
-  border-radius: 24px;
-
   transition: box-shadow 0.5s, border-color 0.5s;
-
-  // &:focus-within {
-  //   box-shadow: 1px 2px 6px #fa6;
-  //   border-color: #fa6;
-  // }
 }
 
 .lineInput {
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: $belgica;
 
   border: none;
   outline: none;

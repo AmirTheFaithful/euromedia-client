@@ -1,28 +1,30 @@
+@use "sass:map";
+
 @use "../../../../styles/abstracts" as *;
 
 .picInfo {
-  // Base setting.
-  left: 2px;
-  bottom: 2px;
+  // Base settings.
+  left: map.get($spacings, xxs);
+  bottom: map.get($spacings, xxs);
 
   @include media(xs, sm) {
     @include orientation(portrait) {
-      font-size: 10px;
-      column-gap: 10px;
+      font-size: map.get($font-sizes, sm);
+      column-gap: map.get($spacings, sm);
     }
 
     @include orientation(landscape) {
-      left: 5px;
-      bottom: 5px;
-      font-size: 5px;
-      column-gap: 5px;
+      left: map.get($spacings, xs);
+      bottom: map.get($spacings, xs);
+      font-size: map.get($font-sizes, xs);
+      column-gap: map.get($spacings, xs);
     }
   }
 
   @include media(sm) {
-    left: 10px;
-    bottom: 10px;
-    font-size: 10px;
-    column-gap: 10px;
+    left: map.get($spacings, sm);
+    bottom: map.get($spacings, sm);
+    font-size: map.get($font-sizes, sm);
+    column-gap: map.get($spacings, sm);
   }
 }

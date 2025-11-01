@@ -1,61 +1,50 @@
+@use "sass:map";
+
 @use "../../../../styles/abstracts/index.scss" as *;
 
 .container {
+  // Base setting.
+  border-radius: map.get($spacings, lg);
+
   @include media(xs) {
-    padding: 4px;
-    column-gap: 10px;
-    padding-left: 6px;
+    padding: map.get($spacings, xxs);
+    column-gap: map.get($spacings, sm);
+    padding-left: map.get($spacings, xxs);
   }
 
   @include media(md) {
-    padding: 6px;
-    column-gap: 20px;
-    padding-left: 12px;
+    padding: map.get($spacings, xxs);
+    column-gap: map.get($spacings, lg);
+    padding-left: map.get($spacings, sm);
   }
 }
 
 .lineInput {
   @include media(xs) {
-    font-size: 14px;
+    font-size: map.get($font-sizes, md);
 
     &::placeholder {
-      font-size: 12px;
-    }
-  }
-
-  @include media(sm) {
-    font-size: 16px;
-
-    &::placeholder {
-      font-size: 14px;
+      font-size: map.get($font-sizes, sm);
     }
   }
 
   @include media(md) {
-    font-size: 18px;
+    font-size: map.get($font-sizes, lg);
 
     &::placeholder {
-      font-size: 20px;
-    }
-  }
-
-  @include media(lg) {
-    font-size: 20px;
-
-    &::placeholder {
-      font-size: 18px;
+      font-size: map.get($font-sizes, md);
     }
   }
 }
 
 .validationCircle {
   @include media(xs) {
-    width: 20px;
-    height: 20px;
+    width: map.get($spacings, lg);
+    height: map.get($spacings, lg);
   }
 
   @include media(md) {
-    width: 30px;
-    height: 30px;
+    width: map.get($spacings, xl);
+    height: map.get($spacings, xl);
   }
 }

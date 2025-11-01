@@ -1,0 +1,93 @@
+@use "sass:map";
+
+@use "../../../styles/abstracts/index.scss" as *;
+
+.form {
+  // Base settings for all screens.
+  padding: map.get($spacings, sm);
+  border-radius: map.get($spacings, sm);
+
+  @include media(xs, md) {
+    @include orientation(portrait) {
+      row-gap: map.get($spacings, lg);
+    }
+
+    @include orientation(landscape) {
+      row-gap: 0;
+    }
+  }
+
+  @include media(md) {
+    row-gap: map.get($spacings, xl);
+    padding: map.get($spacings, md);
+    border-radius: map.get($spacings, md);
+  }
+}
+
+.inputsSection {
+  display: flex;
+  padding: map.get($spacings, sm);
+
+  @include media(xs, sm) {
+    @include orientation(portrait) {
+      flex-direction: column;
+      row-gap: map.get($spacings, lg);
+    }
+
+    @include orientation(landscape) {
+      flex-direction: row;
+      column-gap: map.get($spacings, lg);
+    }
+  }
+
+  @include media(sm, md) {
+    flex-direction: column;
+    row-gap: map.get($spacings, lg);
+    padding: map.get($spacings, lg);
+  }
+
+  @include media(md) {
+    flex-direction: column;
+    row-gap: map.get($spacings, xl);
+  }
+}
+
+.inputsGroup {
+  display: flex;
+  flex-direction: column;
+  row-gap: map.get($spacings, lg);
+}
+
+.formHeading {
+  @include media(xs, sm) {
+    font-size: map.get($font-sizes, lg);
+
+    @include orientation(landscape) {
+      font-size: map.get($font-sizes, md);
+    }
+  }
+
+  @include media(sm) {
+    font-size: map.get($font-sizes, xl);
+  }
+
+  @include media(md) {
+    font-size: map.get($font-sizes, xxl);
+  }
+}
+
+.formSubHeading {
+  font-size: map.get($font-sizes, md);
+}
+
+.loginLink {
+  @include media(xs) {
+    margin-left: map.get($spacings, sm);
+    font-size: map.get($font-sizes, sm);
+  }
+
+  @include media(md) {
+    margin-left: 0;
+    font-size: map.get($font-sizes, md);
+  }
+}

@@ -1,12 +1,17 @@
+@use "sass:map";
+
 @use "../../../../styles/abstracts/index.scss" as *;
 
 .submitButton {
+  // Base setting.
+  border-radius: map.get($spacings, lg);
+
   @include media(xs) {
-    padding: 8px 14px;
-    font-size: 16px;
+    padding: map.get($spacings, xs) map.get($spacings, sm);
+    font-size: map.get($font-sizes, md);
   }
 
   @include media(md) {
-    padding: 10px 20px;
+    padding: map.get($spacings, sm) map.get($spacings, lg);
   }
 }

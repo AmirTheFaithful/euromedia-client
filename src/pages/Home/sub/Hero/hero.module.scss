@@ -24,7 +24,7 @@
 .heroText {
   color: $chromium;
   text-align: center;
-  font-family: "Playwrite DE SAS";
+  font-family: $bawaria;
 
   @include text-gradient-animated(
     ($chromium, $europe-sky, $monica),

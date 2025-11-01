@@ -1,36 +1,38 @@
+@use "sass:map";
+
 @use "../../../../styles/abstracts" as *;
 
 .heroText {
   @include media(xs, sm) {
-    font-size: 80px;
+    font-size: map.get($display-sizes, xs);
 
     @include orientation(portrait) {
-      margin-top: 120px;
-      letter-spacing: 5px;
+      margin-top: map.get($display-sizes, md);
+      letter-spacing: map.get($spacings, xs);
     }
 
     @include orientation(landscape) {
       margin-top: 0;
-      letter-spacing: 16px;
+      letter-spacing: map.get($spacings, md);
     }
   }
 
   @include media(sm, md) {
-    font-size: 100px;
-    margin-top: 60px;
-    letter-spacing: 10px;
+    font-size: map.get($display-sizes, sm);
+    margin-top: map.get($display-sizes, xxs);
+    letter-spacing: map.get($spacings, sm);
   }
 
   @include media(md, lg) {
-    font-size: 120px;
-    margin-top: 80px;
-    letter-spacing: 20px;
+    font-size: map.get($display-sizes, md);
+    margin-top: map.get($display-sizes, xs);
+    letter-spacing: map.get($spacings, lg);
   }
 
   @include media(lg) {
-    font-size: 120px;
-    margin-top: 0;
-    letter-spacing: 16px;
+    font-size: map.get($display-sizes, md);
+    margin-top: map.get($display-sizes, md);
+    letter-spacing: map.get($spacings, md);
   }
 }
 
@@ -38,14 +40,14 @@
   @include media(xs) {
     width: 80%;
     text-align: center;
-    font-size: 16px;
+    font-size: map.get($font-sizes, md);
 
     @include orientation(landscape) {
-      font-size: 24px;
+      font-size: map.get($font-sizes, lg);
     }
   }
 
   @include media(lg) {
-    font-size: 25px;
+    font-size: map.get($font-sizes, xl);
   }
 }

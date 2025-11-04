@@ -3,6 +3,7 @@
     "jsx": "react-jsx", // To uspport JSX
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "target": "ESNext",
     "module": "ESNext",
     "types": ["vite-plugin-svgr/client", "jest"],

@@ -7,6 +7,7 @@ import { GlobalErrorHandler, ErrorBoundary } from "@/providers/ErrorBoundary";
 import { router } from "./router";
 import store from "@/app/store";
 import "@/styles/main.scss";
+import "./i18n";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

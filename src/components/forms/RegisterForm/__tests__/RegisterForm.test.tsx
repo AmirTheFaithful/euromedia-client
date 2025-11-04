@@ -17,10 +17,16 @@ jest.mock("react-router-dom", () => ({
   ),
 }));
 
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({
+    t: (key: string) => key,
+  }),
+}));
+
 // --- Helper functions ---
 
 const mockButtonClick = () => {
-  const button = screen.getByRole("button", { name: /sign up/i });
+  const button = screen.getByRole("button", { name: "register.button-label" });
   fireEvent.click(button);
 };
 
@@ -63,10 +69,12 @@ describe("RegisterForm", () => {
 
     render(<RegisterForm />);
     expect(
-      screen.getByRole("heading", { name: /register/i })
+      screen.getByRole("heading", { name: "register.heading" })
     ).toBeInTheDocument();
 
-    expect(screen.getByRole("button", { name: /sign up/i })).toBeDisabled();
+    expect(
+      screen.getByRole("button", { name: "register.button-label" })
+    ).toBeDisabled();
   });
 
   it("the button becomes enabled only after entering valid input", () => {
@@ -75,7 +83,9 @@ describe("RegisterForm", () => {
     render(<RegisterForm />);
     enterData();
 
-    expect(screen.getByRole("button", { name: /sign up/i })).toBeEnabled();
+    expect(
+      screen.getByRole("button", { name: "register.button-label" })
+    ).toBeEnabled();
   });
 
   it("calls register() hook and displays a success toast notification", async () => {
@@ -93,9 +103,7 @@ describe("RegisterForm", () => {
         password: "23891%jas&^!ladp1293",
       });
       expect(toast.success).toHaveBeenCalledWith(
-        expect.stringMatching(
-          "We have been sent verification link! Please check your inbox."
-        )
+        expect.stringMatching("register.notification-success")
       );
     });
   });
@@ -109,7 +117,7 @@ describe("RegisterForm", () => {
 
     await waitFor(() => {
       expect(toast.error).toHaveBeenCalledWith(
-        expect.stringContaining("Registration failed due to")
+        expect.stringContaining("register.notification-error")
       );
     });
   });
@@ -128,7 +136,9 @@ describe("RegisterForm", () => {
     enterData();
     mockButtonClick();
 
-    const button = screen.getByRole("button", { name: /sign up/i });
+    const button = screen.getByRole("button", {
+      name: "register.button-label",
+    });
     expect(button).toBeDisabled();
 
     resolvePromise!();

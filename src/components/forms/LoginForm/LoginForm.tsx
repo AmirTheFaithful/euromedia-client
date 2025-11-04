@@ -3,6 +3,7 @@ import type { JSX, ChangeEvent, FormEvent } from "react";
 import { memo, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 import type { LoginData } from "./types";
 
@@ -20,6 +21,7 @@ const initialDataState: LoginData = {
 const LoginFormComponent = (): JSX.Element => {
   const [data, setData] = useState<LoginData>(initialDataState);
   const [submitting, setSubmitting] = useState(false);
+  const { t } = useTranslation("auth");
 
   // Initialize using custom hooks.
   const { login } = useLogin();
@@ -36,15 +38,15 @@ const LoginFormComponent = (): JSX.Element => {
     try {
       // Disable submit button while operation is in progress.
       setSubmitting(true);
-      toast.loading("Submission...", { id: "submission" });
+      toast.loading(t("notification-loading"), { id: "submission" });
       // Perform login operation.
       await login(data);
       // Ignite user's eyes with friendly success notification.
-      toast.success("Successfully logged in!");
+      toast.success(t("login.notification-success"));
       // Cleanup form fields.
       setData(initialDataState);
     } catch (error: any) {
-      toast.error(`Login failed due to "${error.message}"`);
+      toast.error(`${t("login.notification-error")} "${error.message}"`);
     } finally {
       toast.dismiss("submission");
       setSubmitting(false);
@@ -55,11 +57,11 @@ const LoginFormComponent = (): JSX.Element => {
     <form className={styles.form} onSubmit={handleSubmit}>
       <header aria-labelledby="form-heading">
         <h1 id="form-heading" className={styles.formHeading}>
-          Login
+          {t("login.heading")}
         </h1>
 
         <h3 id="inputs-heading" className={styles.formSubHeading}>
-          Please, enter your credentials
+          {t("login.subheading")}
         </h3>
       </header>
 
@@ -69,7 +71,7 @@ const LoginFormComponent = (): JSX.Element => {
       >
         <LineInput
           type="email"
-          placeholder="Email"
+          placeholder={t("input.placeholder-email")}
           value={data.email}
           name="email"
           changeHandler={handleChange}
@@ -78,7 +80,7 @@ const LoginFormComponent = (): JSX.Element => {
 
         <LineInput
           type="password"
-          placeholder="Password"
+          placeholder={t("input.placeholder-password")}
           value={data.password}
           name="password"
           changeHandler={handleChange}
@@ -86,14 +88,18 @@ const LoginFormComponent = (): JSX.Element => {
         />
       </section>
 
-      <SubmitButton label="Sign In" invalid={!valid} submitting={submitting} />
+      <SubmitButton
+        label={t("login.button-label")}
+        invalid={!valid}
+        submitting={submitting}
+      />
 
       <Link
-        aria-label="Go to sign-up page"
+        aria-label={t("login.register-link.aria-label")}
         className={styles.loginLink}
         to="/signup"
       >
-        Don't have an account? Sign up!
+        {t("login.register-link")}
       </Link>
     </form>
   );

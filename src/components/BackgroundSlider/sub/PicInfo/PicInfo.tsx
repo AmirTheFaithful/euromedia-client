@@ -1,4 +1,5 @@
 import type { JSX, FC } from "react";
+import { useTranslation } from "react-i18next";
 
 // Local imports:
 import styles from "./picInfo.module.scss";
@@ -9,14 +10,16 @@ interface Props {
 }
 
 export const PicInfo: FC<Props> = ({ image }): JSX.Element => {
+  const { t } = useTranslation("common");
+
   return (
     <div className={styles.picInfo}>
-      <h3>{image.place}</h3>
+      <h3>{t(image.place)}</h3>
       <a
         href={image.authorLink}
         target="_blank"
         rel="noopener noreferrer"
-        title={`Visit ${image.author}'s page`}
+        title={t("picinfo.author-link", { author: image.author })}
       >
         {image.author}
       </a>

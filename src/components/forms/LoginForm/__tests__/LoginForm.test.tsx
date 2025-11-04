@@ -19,8 +19,14 @@ jest.mock("react-router-dom", () => ({
   ),
 }));
 
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({
+    t: (key: string) => key,
+  }),
+}));
+
 const mockButtonClick = (): void => {
-  const button = screen.getByRole("button", { name: /sign in/i });
+  const button = screen.getByRole("button", { name: "login.button-label" });
   fireEvent.click(button);
 };
 
@@ -50,15 +56,21 @@ describe("LoginForm", () => {
   it("renders correctly and submit button is disabled initially.", () => {
     (useLoginValidation as jest.Mock).mockReturnValue(false);
     render(<LoginForm />);
-    expect(screen.getByRole("heading", { name: /login/i })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /sign in/i })).toBeDisabled();
+    expect(
+      screen.getByRole("heading", { name: "login.heading" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "login.button-label" })
+    ).toBeDisabled();
   });
 
   it("enables button when inputs are valid", () => {
     (useLoginValidation as jest.Mock).mockReturnValue(true);
     render(<LoginForm />);
     enterData();
-    expect(screen.getByRole("button", { name: /sign in/i })).toBeEnabled();
+    expect(
+      screen.getByRole("button", { name: "login.button-label" })
+    ).toBeEnabled();
   });
 
   it("calls login() hook and shows success toast on successful login", async () => {
@@ -72,7 +84,7 @@ describe("LoginForm", () => {
         email: "atvars_from_lv@euromedia.eu",
         password: "23891%jas&^!ladp1293",
       });
-      expect(toast.success).toHaveBeenCalledWith("Successfully logged in!");
+      expect(toast.success).toHaveBeenCalledWith("login.notification-success");
     });
   });
 
@@ -86,7 +98,7 @@ describe("LoginForm", () => {
 
     await waitFor(() => {
       expect(toast.error).toHaveBeenCalledWith(
-        expect.stringContaining("Login failed due to")
+        expect.stringContaining("login.notification-error")
       );
     });
   });
@@ -105,7 +117,7 @@ describe("LoginForm", () => {
     enterData();
     mockButtonClick();
 
-    const button = screen.getByRole("button", { name: /sign in/i });
+    const button = screen.getByRole("button", { name: "login.button-label" });
     expect(button).toBeDisabled();
 
     resolvePromise!();

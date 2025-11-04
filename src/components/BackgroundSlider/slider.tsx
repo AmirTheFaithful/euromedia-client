@@ -1,5 +1,7 @@
 import type { JSX, FC } from "react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import { PicInfo } from "./sub/PicInfo";
 import styles from "./slider.module.scss";
 
@@ -9,6 +11,7 @@ const SLIDE_INTERVAL_MS: number = 12000;
 
 export const BackgroundSlider: FC = (): JSX.Element => {
   const [current, setCurrent] = useState(0);
+  const { t } = useTranslation("common");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,7 +35,9 @@ export const BackgroundSlider: FC = (): JSX.Element => {
           }`}
           style={{ backgroundImage: `url(${image.src})` }}
           data-testid="bg-image"
-          aria-label={`${image.place} by ${image.author}`}
+          aria-label={`${image.place} ${t("gallery.by-author")} ${
+            image.author
+          }`}
         >
           <PicInfo image={image} />
         </div>

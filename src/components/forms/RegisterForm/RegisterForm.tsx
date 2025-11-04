@@ -2,6 +2,7 @@ import type { JSX, ChangeEvent, FormEvent } from "react";
 import { memo, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 import type { RegisterData } from "./types";
 import { LineInput } from "../common/LineInput";
@@ -20,6 +21,7 @@ const initialDataState: RegisterData = {
 const RegisterFormComponent = (): JSX.Element => {
   const [data, setData] = useState<RegisterData>(initialDataState);
   const [submitting, setSubmitting] = useState(false);
+  const { t } = useTranslation("auth");
 
   const valid = useRegisterValidation(data);
   const { register } = useRegister();
@@ -35,17 +37,17 @@ const RegisterFormComponent = (): JSX.Element => {
     try {
       // Disable submit button while operation is in progress.
       setSubmitting(true);
-      toast.loading("Submission...", { id: "submission" });
+      toast.loading(t("notification-loading"), {
+        id: "submission",
+      });
       // Perform registration process.
       await register(data);
       // Ignite user's eyes with friendly success notification.
-      toast.success(
-        "We have been sent verification link! Please check your inbox."
-      );
+      toast.success(t("register.notification-success"));
       // Cleanup form fields.
       setData(initialDataState);
     } catch (error: any) {
-      toast.error(`Registration failed due to "${error.message}"`);
+      toast.error(`${t("register.notification-error")} "${error.message}"`);
     } finally {
       toast.dismiss("submission");
       // Cleanup form fields.
@@ -56,17 +58,11 @@ const RegisterFormComponent = (): JSX.Element => {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <header aria-labelledby="form-heading">
-        <h1
-          id="form-heading"
-          className={styles.formHeading}
-          onClick={() => {
-            alert(document.documentElement.clientHeight);
-          }}
-        >
-          Register
+        <h1 id="form-heading" className={styles.formHeading}>
+          {t("register.heading")}
         </h1>
         <h3 id="inputs-heading" className={styles.formSubHeading}>
-          Please, enter your credentials
+          {t("register.subheading")}
         </h3>
       </header>
 
@@ -77,7 +73,7 @@ const RegisterFormComponent = (): JSX.Element => {
         <section className={styles.inputsGroup}>
           <LineInput
             type="text"
-            placeholder="Firstname"
+            placeholder={t("input.placeholder-firstname")}
             value={data.firstname}
             name="firstname"
             changeHandler={handleChange}
@@ -86,7 +82,7 @@ const RegisterFormComponent = (): JSX.Element => {
 
           <LineInput
             type="text"
-            placeholder="Lastname"
+            placeholder={t("input.placeholder-lastname")}
             value={data.lastname}
             name="lastname"
             changeHandler={handleChange}
@@ -97,7 +93,7 @@ const RegisterFormComponent = (): JSX.Element => {
         <section className={styles.inputsGroup}>
           <LineInput
             type="email"
-            placeholder="Email"
+            placeholder={t("input.placeholder-email")}
             value={data.email}
             name="email"
             changeHandler={handleChange}
@@ -106,7 +102,7 @@ const RegisterFormComponent = (): JSX.Element => {
 
           <LineInput
             type="password"
-            placeholder="Password"
+            placeholder={t("input.placeholder-password")}
             value={data.password}
             name="password"
             changeHandler={handleChange}
@@ -115,14 +111,18 @@ const RegisterFormComponent = (): JSX.Element => {
         </section>
       </section>
 
-      <SubmitButton label="Sign Up" invalid={!valid} submitting={submitting} />
+      <SubmitButton
+        label={t("register.button-label")}
+        invalid={!valid}
+        submitting={submitting}
+      />
 
       <Link
-        aria-label="Go to sign-in page"
+        aria-label={t("register.login-link.aria-label")}
         className={styles.loginLink}
         to="/signin"
       >
-        Have an account? Log in!
+        {t("register.login-link")}
       </Link>
     </form>
   );

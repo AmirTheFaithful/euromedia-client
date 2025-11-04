@@ -1,0 +1,16 @@
+{
+  "picinfo": {
+    "author-link": "Visit {{author}}'s page",
+
+    "places": {
+      "graz": "Graz, Austria",
+      "prague": "Prague, Czech Republic",
+      "hamburg": "Hamburg, Germany"
+    }
+  },
+
+  "fallbacks": {
+    "error.title": "Something went wrong",
+    "error.retry": "Retry again"
+  }
+}

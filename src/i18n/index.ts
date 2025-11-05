@@ -6,12 +6,17 @@ import enCommon from "./locales/en/common.json";
 import enHome from "./locales/en/home.json";
 import enAuth from "./locales/en/auth.json";
 
+import uaCommon from "./locales/ua/common.json";
+import uaHome from "./locales/ua/home.json";
+import uaAuth from "./locales/ua/auth.json";
+
 void i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
       en: { common: enCommon, home: enHome, auth: enAuth },
+      ua: { common: uaCommon, home: uaHome, auth: uaAuth },
     },
     fallbackLng: "en",
     lng: "en",

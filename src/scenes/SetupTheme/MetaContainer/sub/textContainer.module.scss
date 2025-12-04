@@ -1,0 +1,19 @@
+@use "textContainer.breakpoints";
+
+.container {
+  @include flex-center;
+  @include flex-column;
+}
+
+.title {
+  color: $brusels;
+  font-weight: 500;
+  font-family: $scandic;
+  // text-shadow: 0px 0px 26px #acfc;
+}
+
+.subtitle {
+  color: $french-police;
+  font-weight: 400;
+  font-family: $scandic;
+}

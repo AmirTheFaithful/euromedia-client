@@ -1,0 +1,7 @@
+@use "metaContainer.breakpoints" as *;
+
+.buttonsContainer {
+  @include flex-row;
+  margin: 0 auto;
+  justify-content: space-between;
+}

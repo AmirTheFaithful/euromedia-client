@@ -1,0 +1,19 @@
+@use "../../../styles/abstracts" as *;
+
+.buttonsContainer {
+  @include media(xs) {
+    width: 80%;
+  }
+
+  @include media(xs, sm) {
+    width: 60%;
+  }
+
+  @include media(sm, md) {
+    width: 50%;
+  }
+
+  @include media(md) {
+    width: 40%;
+  }
+}

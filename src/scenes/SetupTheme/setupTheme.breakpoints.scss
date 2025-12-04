@@ -1,0 +1,19 @@
+@use "sass:map" as map;
+
+@use "../../styles/abstracts" as *;
+
+.scene {
+  // Small and medium screens.
+  @include media(xs, sm) {
+    row-gap: map.get($spacings, sm);
+  }
+
+  // Since screen is not among small group - stay flex-row only.
+  @include media(lg) {
+    @include flex-row(map.get($spacings, lg));
+  }
+
+  @include media(xl) {
+    column-gap: map.get($spacings, xl);
+  }
+}

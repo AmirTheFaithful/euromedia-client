@@ -1,0 +1,21 @@
+@use "sass:map" as map;
+
+@use "../../../../styles/abstracts/" as *;
+
+.container {
+  @include media(xs, sm) {
+    row-gap: 2px;
+  }
+}
+
+.title {
+  @include media(xs, sm) {
+    font-size: map.get($font-sizes, lg);
+  }
+}
+
+.subtitle {
+  @include media(xs, sm) {
+    font-size: map.get($font-sizes, md);
+  }
+}

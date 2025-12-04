@@ -1,0 +1,17 @@
+@use "sass:map" as map;
+
+@use "setupTheme.breakpoints.scss";
+
+.scene {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, #202020, black);
+}
+
+// .backBtn {
+//   padding: 0.6rem;
+//   font-size: 1.2rem;
+//   border-radius: 0.6rem;
+// }

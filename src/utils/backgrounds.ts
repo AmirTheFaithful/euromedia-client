@@ -1,7 +1,7 @@
-import Graz_1 from "@/assets/images/Graz_1.webp";
-import Graz_2 from "@/assets/images/Graz_2.webp";
-import Prague from "@/assets/images/Prague.webp";
-import Hamburg from "@/assets/images/Hamburg.webp";
+import Graz_1 from "@/assets/images/places/Graz_1.webp";
+import Graz_2 from "@/assets/images/places/Graz_2.webp";
+import Prague from "@/assets/images/places/Prague.webp";
+import Hamburg from "@/assets/images/places/Hamburg.webp";
 
 import { BackgroundImage } from "@/types/backgroundImage.type";
 

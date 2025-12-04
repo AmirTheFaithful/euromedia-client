@@ -10,17 +10,20 @@ import uaCommon from "./locales/ua/common.json";
 import uaHome from "./locales/ua/home.json";
 import uaAuth from "./locales/ua/auth.json";
 
+import enColors from "./locales/en/colors.json";
+import uaColors from "./locales/ua/colors.json";
+
 void i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
-      en: { common: enCommon, home: enHome, auth: enAuth },
-      ua: { common: uaCommon, home: uaHome, auth: uaAuth },
+      en: { common: enCommon, home: enHome, auth: enAuth, colors: enColors },
+      ua: { common: uaCommon, home: uaHome, auth: uaAuth, colors: uaColors },
     },
-    fallbackLng: "en",
-    lng: "en",
-    ns: ["common", "auth"],
+    fallbackLng: "ua",
+    lng: "ua",
+    ns: ["common", "auth", "colors"],
     defaultNS: "common",
     interpolation: { escapeValue: false },
     detection: {

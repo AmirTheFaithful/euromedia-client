@@ -11,7 +11,7 @@ interface Prop {
 }
 
 export const Setup2FA: FC<Prop> = ({ handleStage }): JSX.Element => {
-  const { t } = useTranslation("auth");
+  const { t } = useTranslation(["auth", "common"]);
 
   return (
     <section

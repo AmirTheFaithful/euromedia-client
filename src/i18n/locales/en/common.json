@@ -12,5 +12,9 @@
   "fallbacks": {
     "error.title": "Something went wrong",
     "error.retry": "Retry again"
+  },
+
+  "components": {
+    "button.skip": "Skip"
   }
 }

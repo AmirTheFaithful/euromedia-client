@@ -1,10 +1,12 @@
 import type { JSX } from "react";
 
 import { motion } from "motion/react";
+import { t } from "i18next";
 
 import { usePhaseContext, PhaseContext } from "../../PhaseContext";
 
 import styles from "./textContainer.module.scss";
+import { useTranslation } from "react-i18next";
 
 export const TextContainer = (): JSX.Element => {
   return (
@@ -16,6 +18,7 @@ export const TextContainer = (): JSX.Element => {
 };
 
 export const Title = (): JSX.Element => {
+  const { t } = useTranslation("colors");
   const { phase, setPhase } = usePhaseContext(PhaseContext);
 
   return (
@@ -34,12 +37,13 @@ export const Title = (): JSX.Element => {
       }}
       transition={{ duration: 1.2, type: "spring" }}
     >
-      Select coloristic signature
+      {t("colors.setup.title")}
     </motion.p>
   );
 };
 
 export const Subtitle = (): JSX.Element => {
+  const { t } = useTranslation("colors");
   const { phase, setPhase } = usePhaseContext(PhaseContext);
 
   return (
@@ -58,7 +62,7 @@ export const Subtitle = (): JSX.Element => {
       }}
       transition={{ duration: 1.2, type: "spring" }}
     >
-      As you prefer
+      {t("colors.setup.subtitle")}
     </motion.p>
   );
 };

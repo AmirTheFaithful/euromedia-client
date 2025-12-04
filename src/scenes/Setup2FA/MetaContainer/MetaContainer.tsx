@@ -19,7 +19,10 @@ export const MetaContainer: FC<Prop> = ({ t, handleStage }): JSX.Element => {
 
       <div className={styles.buttonsContainer}>
         <Button label={t("post-auth.setup-btn")} />
-        <Button label={t("post-auth.skip-btn")} onClick={handleStage} />
+        <Button
+          label={t("common:components.button.skip")}
+          onClick={handleStage}
+        />
       </div>
     </div>
   );

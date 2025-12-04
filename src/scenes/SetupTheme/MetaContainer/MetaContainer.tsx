@@ -1,6 +1,7 @@
 import type { JSX } from "react";
 
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 
 import { usePhaseContext, PhaseContext } from "../PhaseContext";
 import { Button } from "@/components/Button";
@@ -9,6 +10,7 @@ import { TextContainer } from "./sub/TextContainer";
 import styles from "./metaContainer.module.scss";
 
 export const MetaContainer = (): JSX.Element => {
+  const { t } = useTranslation(["colors", "common"]);
   const { phase } = usePhaseContext(PhaseContext);
 
   return (
@@ -28,8 +30,8 @@ export const MetaContainer = (): JSX.Element => {
         transition={{ duration: 1.2, type: "spring" }}
         className={styles.buttonsContainer}
       >
-        <Button label="Set up" />
-        <Button label="Skip" />
+        <Button label={t("colors.setup.confirm")} />
+        <Button label={t("common:components.button.skip")} />
       </motion.div>
     </div>
   );

@@ -1,0 +1,35 @@
+@use "sass:map" as map;
+
+@use "../../../styles/abstracts" as *;
+
+.metaContainer {
+  @include media(lg) {
+    row-gap: map.get($display-sizes, lg);
+  }
+}
+
+.title {
+  @include media(xs) {
+    font-size: map.get($spacings, md);
+    line-height: map.get($spacings, lg);
+  }
+
+  @include media(lg) {
+    font-size: map.get($spacings, xl);
+    line-height: normal;
+  }
+}
+
+.buttonsContainer {
+  @include media(xs) {
+    width: 70%;
+  }
+
+  @include media(sm) {
+    width: 60%;
+  }
+
+  @include media(lg) {
+    width: 50%;
+  }
+}

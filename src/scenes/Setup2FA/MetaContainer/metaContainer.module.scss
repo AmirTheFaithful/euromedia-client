@@ -1,0 +1,23 @@
+@use "sass:map";
+
+@use "./metaContainer.breakpoints.scss";
+
+.metaContainer {
+  @include flex-center;
+
+  display: flex;
+  text-align: center;
+  font-family: $scandic;
+  flex-direction: column;
+}
+
+.title {
+  width: 80%;
+  color: $brusels;
+}
+
+.buttonsContainer {
+  @include flex-row;
+  margin: 0 auto;
+  justify-content: space-between;
+}

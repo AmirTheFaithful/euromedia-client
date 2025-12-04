@@ -1,0 +1,8 @@
+@use "sass:map";
+
+@use "./setup2FA.breakpoints.scss";
+
+.scene {
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, $boutique, $monica);
+}

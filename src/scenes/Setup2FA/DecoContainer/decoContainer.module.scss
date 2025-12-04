@@ -1,0 +1,20 @@
+@use "sass:map" as map;
+
+@use "../../../styles/abstracts" as *;
+
+.decoContainer {
+  @include flex-center;
+}
+
+.illustration {
+  width: 80%;
+  max-width: map.get($breakpoints, md);
+
+  picture,
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+}

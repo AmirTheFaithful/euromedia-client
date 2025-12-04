@@ -1,0 +1,27 @@
+@use "sass:map" as map;
+
+@use "../../styles/abstracts" as *;
+
+.scene {
+  // Small and medium screens.
+  @include media(xs, lg) {
+    // On portrait - flex-column.
+    @include orientation(portrait) {
+      @include flex-column(map.get($spacings, md));
+    }
+
+    // On landscape - flex-row.
+    @include orientation(landscape) {
+      @include flex-row(map.get($spacings, sm));
+    }
+  }
+
+  // Since screen is not among small group - stay flex-row only.
+  @include media(lg) {
+    @include flex-row(map.get($spacings, lg));
+  }
+
+  @include media(xl) {
+    column-gap: map.get($spacings, xl);
+  }
+}

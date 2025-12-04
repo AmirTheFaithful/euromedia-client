@@ -1,0 +1,21 @@
+@use "sass:map" as map;
+
+@use "../../styles/abstracts" as *;
+
+.primary {
+  border-radius: map.get($spacings, xs);
+
+  @include media(xs, md) {
+    padding: map.get($spacings, xs) map.get($spacings, sm);
+    font-size: map.get($font-sizes, md);
+  }
+
+  @include media(md) {
+    padding: map.get($spacings, sm) map.get($spacings, md);
+    font-size: map.get($font-sizes, lg);
+  }
+}
+
+.buttonContainer {
+  border-radius: map.get($spacings, xs);
+}

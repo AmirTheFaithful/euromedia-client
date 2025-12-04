@@ -1,0 +1,38 @@
+@use "button.breakpoints" as *;
+
+.primary {
+  color: $brusels;
+  font-weight: 300;
+  font-family: $scandic;
+
+  border: none;
+  margin: 1px;
+  transition: background-color 0.2s ease-in-out;
+  background-color: $oslo-evening;
+
+  &:enabled {
+    cursor: pointer;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    animation: none;
+  }
+}
+
+.buttonContainer {
+  overflow: hidden;
+  animation: ColorPlay 6s ease-in-out infinite alternate;
+  background-size: 400% 400%;
+  background-image: linear-gradient(to top right, var(--color1), var(--color2));
+}
+
+.buttonContainer_disabled {
+  animation: none;
+  background-image: none;
+}

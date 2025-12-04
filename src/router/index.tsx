@@ -6,6 +6,7 @@ import { ErrorFallback, LoadingFallback } from "@/fallbacks";
 const HomePage = lazy(() => import("@/pages/Home"));
 const SignupPage = lazy(() => import("@/pages/Signup"));
 const SigninPage = lazy(() => import("@/pages/Signin"));
+const PostAuthPage = lazy(() => import("@/pages/PostAuthSetup"));
 
 export const router = createBrowserRouter([
   {
@@ -34,5 +35,9 @@ export const router = createBrowserRouter([
       </Suspense>
     ),
     errorElement: <ErrorFallback />,
+  },
+  {
+    path: "/scenes/postauth",
+    element: <PostAuthPage />,
   },
 ]);
